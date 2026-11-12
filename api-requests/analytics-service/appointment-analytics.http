@@ -1,0 +1,4 @@
+###Get Appointment Statistics
+GET http://localhost:4004/api/analytics/appointments/count
+Content-Type: application/json
+Authorization: Bearer {{token}}

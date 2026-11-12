@@ -1,0 +1,4 @@
+###Get Total Patients
+GET http://localhost:4004/api/analytics/patients/count
+Content-Type: application/json
+Authorization: Bearer {{token}}

@@ -1,0 +1,20 @@
+
+### Create a new doctor
+POST http://localhost:4004/api/doctors
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "doctorName": "Dr. Dinesh Dey",
+  "doctorEmail": "4525dinesh@gmail.com",
+  "doctorPhone": "9876543210",
+  "doctorAddress": "123 Civil Lines",
+  "city": "Agra",
+  "state": "Uttar Pradesh",
+  "zipCode": "282001",
+  "gender": "male",
+  "speciality": "Cardiology",
+  "department": "Cardiology",
+  "qualification": "MBBS, MD"
+}
+

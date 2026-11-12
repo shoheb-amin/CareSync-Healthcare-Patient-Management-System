@@ -1,0 +1,4 @@
+### Delete an entity
+DELETE http://localhost:4007/doctors/718d2d9e-7f37-49ec-afd7-bc0298655e15
+
+###

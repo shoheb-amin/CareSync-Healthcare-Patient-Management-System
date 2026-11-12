@@ -1,0 +1,18 @@
+### updates an existing patient entity
+PUT http://localhost:4007/doctors/77098355-0a17-423d-874c-18a8f48aa850
+content-Type: application/json
+
+{
+  "doctorName": "Dr. Anuv Sharma",
+  "doctorEmail": "anuv.sharma@example.com",
+  "doctorPhone": "9876543211",
+  "doctorAddress": "456 MG Road",
+  "city": "Agra",
+  "state": "Uttar Pradesh",
+  "zipCode": "282002",
+  "gender": "male",
+  "speciality": "Interventional Cardiology",
+  "department": "Cardiology",
+  "qualification": "MBBS, MD, DM"
+}
+###

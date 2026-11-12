@@ -1,0 +1,192 @@
+server:
+  port: 4004 #gateway listens on port 4004
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            #http://localhost:4004/auth/login
+            #API Gateway --> http://auth-service:4005/login
+            - id: auth-service-route
+              #auth-ecs-service-2342323454325.aws.com
+              uri: http://host.docker.internal:4005
+              predicates:
+                - Path=/auth/**
+              filters:
+                - StripPrefix=1
+
+            # REST CLIENT
+            # http://localhost:4004/api/patients
+            #
+            # API GATEWAY
+            # http://patient-service:4000/patients
+            #
+            - id: patient-service-route
+              uri: http://host.docker.internal:4000
+              predicates:
+                - Path=/api/patients,/api/patients/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+            # REST CLIENT
+            # http://localhost:4004/api/doctors
+            #
+            # API GATEWAY
+            # http://doctor-service:4007/doctors
+            #
+            - id: doctor-service-route
+              uri: http://host.docker.internal:4007
+              predicates:
+                - Path=/api/doctors,/api/doctors/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+
+            # REST CLIENT
+            # http://localhost:4004/api/appointments
+            #
+            # API GATEWAY
+            # http://appointments-service:4006/appointments
+            #
+            - id: appointment-service-route
+              uri: http://host.docker.internal:4006
+              predicates:
+                - Path=/api/appointments,/api/appointments/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+            # REST CLIENT
+            # http://localhost:4004/api/notifications
+            #
+            # API GATEWAY
+            # http://doctor-service:4008/notifications
+            #
+            - id: notification-service-route
+              uri: http://host.docker.internal:4008
+              predicates:
+                - Path=/api/notifications,/api/notifications/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+            # REST CLIENT
+            # http://localhost:4004/api/analytics
+            #
+            # API GATEWAY
+            # http://analytics-services:4002/analytics
+            #
+            - id: analytics-services-route
+              uri: http://host.docker.internal:4002
+              predicates:
+                - Path=/api/analytics,/api/analytics/**
+              filters:
+                - JwtValidation
+
+
+            # REST CLIENT
+            # http://localhost:4004/api/payments
+            #
+            # API GATEWAY
+            # http://doctor-service:4001/payments
+            #
+            - id: billing-service-route
+              uri: http://host.docker.internal:4001
+              predicates:
+                - Path=/api/payments,/api/payments/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+            # REST CLIENT
+            # http://localhost:4004/api-docs/patients
+            #
+            # API GATEWAY
+            # http://patient-service:4000/v3/api-docs
+            #
+            - id: api-docs-patient-route
+              uri: http://host.docker.internal:4000
+              predicates:
+                - Path=/api-docs/patients
+              filters:
+                - RewritePath=/api-docs/patients,/v3/api-docs
+
+            - id: api-docs-auth-route
+              uri: http://host.docker.internal:4005
+              predicates:
+                - Path=/api-docs/auth
+              filters:
+                - RewritePath=/api-docs/auth,/v3/api-docs
+
+            # REST CLIENT
+            # http://localhost:4004/api-docs/payments
+            #
+            # API GATEWAY
+            # http://billing-service:4001/v3/api-docs
+            #
+            - id: api-docs-billing-route
+              uri: http://host.docker.internal:4001
+              predicates:
+                - Path=/api-docs/payments
+              filters:
+                - RewritePath=/api-docs/payments,/v3/api-docs
+
+
+            # REST CLIENT
+            # http://localhost:4004/api-docs/notifications
+            #
+            # API GATEWAY
+            # http://notification-service:4008/v3/api-docs
+            #
+            - id: api-docs-notification-route
+              uri: http://host.docker.internal:4008
+              predicates:
+                - Path=/api-docs/notifications
+              filters:
+                - RewritePath=/api-docs/notifications,/v3/api-docs
+
+
+            # REST CLIENT
+            # http://localhost:4004/api-docs/appointments
+            #
+            # API GATEWAY
+            # http://appointment-service:4006/v3/api-docs
+            #
+            - id: api-docs-appointment-route
+              uri: http://host.docker.internal:4006
+              predicates:
+                - Path=/api-docs/appointments
+              filters:
+                - RewritePath=/api-docs/appointments,/v3/api-docs
+
+
+            # REST CLIENT
+            # http://localhost:4004/api-docs/doctors
+            #
+            # API GATEWAY
+            # http://doctor-service:4007/v3/api-docs
+            #
+            - id: api-docs-doctor-route
+              uri: http://host.docker.internal:4007
+              predicates:
+                - Path=/api-docs/doctors
+              filters:
+                - RewritePath=/api-docs/doctors,/v3/api-docs
+
+
+            # REST CLIENT
+            # http://localhost:4004/api-docs/analytics
+            #
+            # API GATEWAY
+            # http://analytics-services:4002/v3/api-docs
+            #
+            - id: api-docs-analytics-route
+              uri: http://host.docker.internal:4002
+              predicates:
+                - Path=/api-docs/analytics
+              filters:
+                - RewritePath=/api-docs/analytics,/v3/api-docs

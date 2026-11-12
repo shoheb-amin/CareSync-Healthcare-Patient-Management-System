@@ -1,0 +1,4 @@
+
+PATCH http://localhost:4006/appointments/cf7408af-8ec5-4c57-be98-abaa48fa8524/cancel
+Content-Type: application/json
+Authorization: Bearer {{token}}

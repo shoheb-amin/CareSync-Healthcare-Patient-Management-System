@@ -1,0 +1,3 @@
+### Get doctor appointment history
+GET http://localhost:4006/appointments/doctors/b76947d6-1f40-4f52-952d-0fa2f6ff71dc/appointment/history
+Authorization: Bearer {{token}}

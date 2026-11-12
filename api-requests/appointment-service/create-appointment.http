@@ -1,0 +1,13 @@
+### Creates a new appointment
+POST http://localhost:4004/api/appointments
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+{
+  "patientId": "05c3dc4c-dcb5-4d7c-8d00-aa2c0c9b47ee",
+  "doctorId": "e2e95783-e31c-45d1-9023-4eff7e93bad3",
+  "appointmentDate": "2026-11-04",
+  "appointmentTime": "19:30:00",
+  "reason": "Regular health checkup"
+}

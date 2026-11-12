@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "appointment";
+
+service AppointmentService {
+
+  rpc GetUpcomingAppointments(UpcomingAppointmentRequest)
+      returns (UpcomingAppointmentResponse);
+}
+
+message UpcomingAppointmentRequest {
+  int32 minutes = 1;
+}
+
+message UpcomingAppointmentResponse {
+  repeated UpcomingAppointment appointments = 1;
+}
+
+message UpcomingAppointment {
+
+  string appointmentId = 1;
+  string patientId = 2;
+  string doctorId = 3;
+  string patientName = 4;
+  string doctorName = 5;
+  string appointmentDate = 6;
+  string appointmentTime = 7;
+}

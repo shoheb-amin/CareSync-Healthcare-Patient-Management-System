@@ -1,0 +1,34 @@
+### 1. Get Total Payments
+GET http://localhost:4004/api/analytics/payments/count
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 2. Get Successful Payments
+GET http://localhost:4002/api/analytics/payments/successful
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 3. Get Failed Payments
+GET http://localhost:4004/api/analytics/payments/failed
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 4. Get Pending Payments
+GET http://localhost:4004/api/analytics/payments/pending
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 4. Get Total Revenue
+GET http://localhost:4004/api/analytics/payments/revenue
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 5. Get Payment Statistics
+GET http://localhost:4004/api/analytics/payments/statistics
+Content-Type: application/json
+Authorization: Bearer {{token}}

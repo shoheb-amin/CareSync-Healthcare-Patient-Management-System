@@ -1,0 +1,10 @@
+### Create a new payment
+
+POST http://localhost:4004/api/payments
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "patientId": "05c3dc4c-dcb5-4d7c-8d00-aa2c0c9b47ee",
+  "amount": 15000.00
+}

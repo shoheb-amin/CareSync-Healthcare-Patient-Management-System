@@ -1,0 +1,21 @@
+syntax="proto3";
+
+package doctor.events;
+option java_multiple_files=true;
+
+
+message DoctorEvent{
+  string id=1;
+  string doctor_name=2;
+  string doctor_email=3;
+  string doctor_phone=4;
+  string doctor_address=5;
+  string city=6;
+  string state=7;
+  string zipcode=8;
+  string speciality=9;
+  string department=10;
+  string qualification=11;
+  string gender=12;
+  string status=13;
+}

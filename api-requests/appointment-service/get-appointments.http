@@ -1,0 +1,4 @@
+### Test Appointment Service
+GET http://localhost:4006/appointments
+Content-Type: application/json
+Authorization: Bearer {{token}}

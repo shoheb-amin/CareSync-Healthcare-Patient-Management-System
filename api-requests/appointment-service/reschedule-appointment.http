@@ -1,0 +1,11 @@
+
+PUT http://localhost:4006/appointments/cf7408af-8ec5-4c57-be98-abaa48fa8524
+content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "doctorId": "b76947d6-1f40-4f52-952d-0fa2f6ff71dc",
+  "appointmentDate": "2026-10-26",
+  "appointmentTime": "11:00:00",
+  "reason": "Rescheduled due to personal reasons"
+}

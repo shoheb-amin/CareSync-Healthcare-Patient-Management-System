@@ -1,0 +1,13 @@
+### create custom or mannual notification
+POST http://localhost:4008/notifications
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "recipientId": "005cb405-39ad-4343-94fb-29b8e8ba5f51",
+  "recipientType": "PATIENT",
+  "notificationType": "General",
+  "notificationChannel": "EMAIL",
+  "subject": "Appointment Reminder",
+  "message": "Your appointment is cancelled for tomorrow."
+}

@@ -1,0 +1,14 @@
+### Creates a new patient entity
+POST http://localhost:4004/api/patients
+content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "shoheb amin",
+  "email": "shohebamin7@gmail.com",
+  "address": "Kailash Nagar Vrindavan",
+  "dateOfBirth": "2006-04-17",
+  "registeredDate": "2024-11-20",
+  "gender": "male"
+}
+###

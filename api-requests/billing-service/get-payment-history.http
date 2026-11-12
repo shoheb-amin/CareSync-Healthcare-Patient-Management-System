@@ -1,0 +1,4 @@
+### Get payment history by patient ID
+
+GET http://localhost:4001/payments/patient/7db18d41-5bda-4724-8a7c-72ce5df619a6
+Authorization: Bearer {{token}}

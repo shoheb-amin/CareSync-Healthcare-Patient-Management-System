@@ -1,0 +1,11 @@
+### Mark payment as successful
+                                        ###paymentID
+PATCH http://localhost:4001/payments/69e1a8b1-e046-457b-bc97-da58b430b9a6/status?paymentStatus=SUCCESS
+Authorization: Bearer {{token}}
+
+###
+
+### Mark payment as failed
+                                    ###paymentID
+PATCH http://localhost:4001/payments/af7e76b7-e174-4e3c-b241-02c1854a14a3/status?paymentStatus=FAILED
+Authorization: Bearer {{token}}

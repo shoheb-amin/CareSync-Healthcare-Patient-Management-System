@@ -1,0 +1,3 @@
+### Get appointments by status
+GET http://localhost:4006/appointments/status?status=CANCELLED
+Authorization: Bearer {{token}}

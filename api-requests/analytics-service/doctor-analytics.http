@@ -1,0 +1,22 @@
+### 1. Get Total Doctors
+GET http://localhost:4004/api/analytics/doctors/count
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 2. Get Doctors By Department
+GET http://localhost:4004/api/analytics/doctors/department/Cardiology
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 3. Get Doctors By City
+GET http://localhost:4004/api/analytics/doctors/city/Delhi
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 4. Get All Doctors
+GET http://localhost:4004/api/analytics/doctors
+Content-Type: application/json
+Authorization: Bearer {{token}}

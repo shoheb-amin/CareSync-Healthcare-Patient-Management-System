@@ -1,0 +1,112 @@
+server:
+  port: 4004 #gateway listens on port 4004
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            #http://localhost:4004/auth/login
+            #API Gateway --> http://auth-service:4005/login
+            - id: auth-service-route
+              #auth-ecs-service-2342323454325.aws.com
+              uri: http://auth-service:4005
+              predicates:
+                - Path=/auth/**
+              filters:
+                - StripPrefix=1
+
+            # REST CLIENT
+            # http://localhost:4004/api/patients
+            #
+            # API GATEWAY
+            # http://patient-service:4000/patients
+            #
+            - id: patient-service-route
+              uri: http://patient-service:4000
+              predicates:
+                - Path=/api/patients,/api/patients/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+            # REST CLIENT
+            # http://localhost:4004/api-docs/patients
+            #
+            # API GATEWAY
+            # http://patient-service:4000/v3/api-docs
+            #
+            - id: api-docs-patient-route
+              uri: http://patient-service:4000
+              predicates:
+                - Path=/api-docs/patients
+              filters:
+                - RewritePath=/api-docs/patients,/v3/api-docs
+
+            - id: api-docs-auth-route
+              uri: http://auth-service:4005
+              predicates:
+                - Path=/api-docs/auth
+              filters:
+                - RewritePath=/api-docs/auth,/v3/api-docs
+
+
+            # Doctor-Service
+            #http://localhost:4004/api/doctors
+            #API Gateway --> http://doctor-service:4007/doctors
+            - id: doctor-service-route
+              uri: http://doctor-service:4007
+              predicates:
+                - Path=/api/doctors,/api/doctors/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+
+            #Appointment Service
+            #http://localhost:4008/api/notification
+            #API Gateway --> http://notification-service:4008/notificaitons
+            - id: notification-service-route
+              uri: http://notification-service:4008
+              predicates:
+                - Path=/api/notifications,/api/notifications/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+
+            #Appointment Service
+            #http://localhost:4004/api/appointments
+            #API Gateway --> http://appointment-service:4006/appointments
+            - id: appointment-service-route
+              uri: http://appointment-service:4006
+              predicates:
+                - Path=/api/appointments,/api/appointments/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+
+
+            # Billing Service
+            # http://localhost:4004/api/payments
+            # API Gateway --> http://billing-service:4001/payments
+            - id: billing-service-route
+              uri: http://billing-service:4001
+              predicates:
+                - Path=/api/payments,/api/payments/**
+              filters:
+                - StripPrefix=1
+                - JwtValidation
+
+
+            # Analytics Service
+            # http://localhost:4004/api/analytics
+            # API Gateway --> http://analytics-services:4002/analytics
+            - id: analytics-services-route
+              uri: http://analytics-services:4002
+              predicates:
+                - Path=/api/analytics,/api/analytics/**
+              filters:
+                - JwtValidation

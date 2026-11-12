@@ -1,0 +1,6 @@
+### GET request to example server
+GET http://localhost:4006/appointments/doctor/availability/search?department=Cardiology&speciality=Cardiology&availabilityDate=2026-10-26
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
