@@ -216,6 +216,77 @@ public class AppointmentService {
         return AppointmentMapper.toDTO(appointment);
     }
 
+    //confirm appointment
+    @Transactional
+    public AppointmentResponseDTO confirmAppointment(UUID appointmentId) {
+
+        Appointment appointment = appointmentRepo.findById(appointmentId)
+                .orElseThrow(() -> new AppointmentNotFoundException(
+                        "Appointment not found with ID: " + appointmentId
+                ));
+
+        if (appointment.getStatus() == PatientAppointmentStatus.CANCELLED) {
+            throw new IllegalStateException(
+                    "Cancelled appointment cannot be confirmed"
+            );
+        }
+
+        if (appointment.getStatus() == PatientAppointmentStatus.COMPLETED) {
+            throw new IllegalStateException(
+                    "Completed appointment cannot be confirmed"
+            );
+        }
+
+        if (appointment.getStatus() == PatientAppointmentStatus.CONFIRMED) {
+            throw new IllegalStateException(
+                    "Appointment is already confirmed"
+            );
+        }
+
+        appointment.setStatus(PatientAppointmentStatus.CONFIRMED);
+
+        Appointment updatedAppointment = appointmentRepo.save(appointment);
+
+        appointmentKafkaProducer.sendEvent(
+                updatedAppointment,
+                "APPOINTMENT_CONFIRMED"
+        );
+
+        log.info("Appointment confirmed: {}", appointmentId);
+
+        return AppointmentMapper.toDTO(updatedAppointment);
+    }
+
+    //complete appointment
+    @Transactional
+    public AppointmentResponseDTO completeAppointment(UUID appointmentId) {
+
+        Appointment appointment = appointmentRepo.findById(appointmentId)
+                .orElseThrow(() -> new AppointmentNotFoundException(
+                        "Appointment not found with ID: " + appointmentId
+                ));
+
+        if (appointment.getStatus() != PatientAppointmentStatus.CONFIRMED) {
+            throw new IllegalStateException(
+                    "Only confirmed appointments can be completed"
+            );
+        }
+
+        appointment.setStatus(PatientAppointmentStatus.COMPLETED);
+
+        Appointment updatedAppointment = appointmentRepo.save(appointment);
+
+        appointmentKafkaProducer.sendEvent(
+                updatedAppointment,
+                "APPOINTMENT_COMPLETED"
+        );
+
+        log.info("Appointment completed: {}", appointmentId);
+
+        return AppointmentMapper.toDTO(updatedAppointment);
+    }
+
+
 
 
 }

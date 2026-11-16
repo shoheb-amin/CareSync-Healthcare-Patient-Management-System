@@ -1,0 +1,3 @@
+PATCH http://localhost:4006/appointments/{appointmentId}/complete
+content-Type: application/json
+Authorization: Bearer {{token}}

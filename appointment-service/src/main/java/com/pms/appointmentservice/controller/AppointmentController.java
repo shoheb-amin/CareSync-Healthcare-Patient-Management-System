@@ -146,4 +146,25 @@ public class AppointmentController {
 
         return ResponseEntity.ok().body(availability);
     }
+    //confirm appointment
+    @PatchMapping("/{appointmentId}/confirm")
+    @Operation(summary = "Manually confirm an appointment")
+    public ResponseEntity<AppointmentResponseDTO> confirmAppointment(
+            @PathVariable UUID appointmentId) {
+
+        return ResponseEntity.ok(
+                appointmentService.confirmAppointment(appointmentId)
+        );
+    }
+
+    //complete appointment
+    @PatchMapping("/{appointmentId}/complete")
+    @Operation(summary = "Manually complete an appointment")
+    public ResponseEntity<AppointmentResponseDTO> completeAppointment(
+            @PathVariable UUID appointmentId) {
+
+        return ResponseEntity.ok(
+                appointmentService.completeAppointment(appointmentId)
+        );
+    }
 }
