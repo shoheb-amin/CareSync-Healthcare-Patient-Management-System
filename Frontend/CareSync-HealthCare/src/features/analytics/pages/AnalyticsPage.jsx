@@ -173,13 +173,15 @@ export default function AnalyticsPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-      <div>
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--primary-navy)' }}>
-          Healthcare Analytics &amp; Telemetry
-        </h1>
-        <p style={{ color: 'var(--slate-500)', fontSize: '0.875rem' }}>
-          Aggregate metrics fed through Kafka event streams and reconciled with live microservices.
-        </p>
+      <div className="page-header">
+        <div>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--primary-navy)' }}>
+            Healthcare Analytics &amp; Telemetry
+          </h1>
+          <p style={{ color: 'var(--slate-500)', fontSize: '0.875rem' }}>
+            Aggregate metrics fed through Kafka event streams and reconciled with live microservices.
+          </p>
+        </div>
       </div>
 
       {/* Analytics Overview Cards */}

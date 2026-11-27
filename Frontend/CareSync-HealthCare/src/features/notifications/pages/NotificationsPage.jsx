@@ -151,16 +151,18 @@ export default function NotificationsPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div>
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--primary-navy)' }}>
-          Hospital Notification Dispatch
-        </h1>
-        <p style={{ color: 'var(--slate-500)', fontSize: '0.875rem' }}>
-          Broadcast clinical alerts, appointment reminders, and invoices via Email, SMS, or WhatsApp.
-        </p>
+      <div className="page-header">
+        <div>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--primary-navy)' }}>
+            Hospital Notification Dispatch
+          </h1>
+          <p style={{ color: 'var(--slate-500)', fontSize: '0.875rem' }}>
+            Broadcast clinical alerts, appointment reminders, and invoices via Email, SMS, or WhatsApp.
+          </p>
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 gap-6 notification-grid">
         {/* Dispatch Form Card */}
         <div className="card">
           <h2 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -288,7 +290,7 @@ export default function NotificationsPage() {
         {/* Live Session Dispatch & Audit Log Card */}
         <div className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap' }}>
               <div>
                 <h2 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>
                   <Bell size={18} color="var(--slate-600)" />
@@ -318,7 +320,7 @@ export default function NotificationsPage() {
             </div>
 
             {/* Filter Tabs */}
-            <div style={{ display: 'flex', gap: '8px', marginTop: '16px', borderBottom: '1px solid var(--border)', paddingBottom: '10px' }}>
+            <div style={{ display: 'flex', gap: '8px', marginTop: '16px', borderBottom: '1px solid var(--border)', paddingBottom: '10px', flexWrap: 'wrap' }}>
               <button
                 type="button"
                 onClick={() => setLogFilter('ALL')}

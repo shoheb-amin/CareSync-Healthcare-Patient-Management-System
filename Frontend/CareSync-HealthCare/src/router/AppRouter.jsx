@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import AppLayout from '../components/layout/AppLayout';
 
+import LandingPage from '../features/landing/pages/LandingPage';
 import LoginPage from '../features/auth/pages/LoginPage';
 import DashboardPage from '../features/dashboard/pages/DashboardPage';
 import PatientsPage from '../features/patients/pages/PatientsPage';
@@ -15,12 +16,15 @@ import NotificationsPage from '../features/notifications/pages/NotificationsPage
 export default function AppRouter() {
   return (
     <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
 
       {/* Protected Routes inside authenticated AppLayout */}
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/patients" element={<PatientsPage />} />
           <Route path="/doctors" element={<DoctorsPage />} />
           <Route path="/appointments" element={<AppointmentsPage />} />

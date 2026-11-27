@@ -306,14 +306,14 @@ export default function DashboardPage() {
         <div className="card">
           <div className="card-title">Booked &amp; Confirmed</div>
           <p className="card-subtitle">Scheduled patient visits pending completion</p>
-          <div style={{ marginTop: '16px', display: 'flex', gap: '16px' }}>
-            <div style={{ flex: 1, padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
+          <div style={{ marginTop: '16px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 120px', padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.75rem', color: 'var(--slate-500)' }}>Scheduled / Pending</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--primary-navy)' }}>
                 {metrics.scheduledOrPending}
               </div>
             </div>
-            <div style={{ flex: 1, padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
+            <div style={{ flex: '1 1 120px', padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.75rem', color: 'var(--slate-500)' }}>Confirmed</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--primary-navy)' }}>
                 {metrics.confirmed}
@@ -325,14 +325,14 @@ export default function DashboardPage() {
         <div className="card">
           <div className="card-title">Completed &amp; Cancelled</div>
           <p className="card-subtitle">Fulfilled or canceled clinical sessions</p>
-          <div style={{ marginTop: '16px', display: 'flex', gap: '16px' }}>
-            <div style={{ flex: 1, padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
+          <div style={{ marginTop: '16px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 120px', padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.75rem', color: 'var(--slate-500)' }}>Completed</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--success)' }}>
                 {metrics.completed}
               </div>
             </div>
-            <div style={{ flex: 1, padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
+            <div style={{ flex: '1 1 120px', padding: '12px', background: 'var(--slate-50)', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.75rem', color: 'var(--slate-500)' }}>Cancelled</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--danger)' }}>
                 {metrics.cancelled}
@@ -344,20 +344,20 @@ export default function DashboardPage() {
         <div className="card">
           <div className="card-title">Billing Summary</div>
           <p className="card-subtitle">Transaction status from Billing Service</p>
-          <div style={{ marginTop: '16px', display: 'flex', gap: '12px' }}>
-            <div style={{ flex: 1, padding: '10px', background: 'var(--slate-50)', borderRadius: '8px' }}>
+          <div style={{ marginTop: '16px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 80px', padding: '10px', background: 'var(--slate-50)', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.7rem', color: 'var(--slate-500)' }}>SUCCESS</div>
               <div style={{ fontSize: '1.15rem', fontWeight: 600, color: 'var(--success)' }}>
                 {metrics.billingSuccess}
               </div>
             </div>
-            <div style={{ flex: 1, padding: '10px', background: 'var(--slate-50)', borderRadius: '8px' }}>
+            <div style={{ flex: '1 1 80px', padding: '10px', background: 'var(--slate-50)', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.7rem', color: 'var(--slate-500)' }}>PENDING</div>
               <div style={{ fontSize: '1.15rem', fontWeight: 600, color: 'var(--warning)' }}>
                 {metrics.billingPending}
               </div>
             </div>
-            <div style={{ flex: 1, padding: '10px', background: 'var(--slate-50)', borderRadius: '8px' }}>
+            <div style={{ flex: '1 1 80px', padding: '10px', background: 'var(--slate-50)', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.7rem', color: 'var(--slate-500)' }}>FAILED</div>
               <div style={{ fontSize: '1.15rem', fontWeight: 600, color: 'var(--danger)' }}>
                 {metrics.billingFailed}
@@ -369,7 +369,7 @@ export default function DashboardPage() {
 
       {/* Available Doctors on Duty Section */}
       <div className="card" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
           <div>
             <h2 className="card-title" style={{ margin: 0 }}>Available Doctors on Duty</h2>
             <p className="card-subtitle">
@@ -402,7 +402,7 @@ export default function DashboardPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))',
               gap: '20px',
             }}
           >
@@ -422,23 +422,23 @@ export default function DashboardPage() {
                     border: '1px solid #e2e8f0',
                     borderLeft: '4px solid var(--teal-600)',
                     borderRadius: '12px',
-                    padding: '20px',
+                    padding: '22px 24px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    gap: '16px',
+                    gap: '18px',
                     boxShadow: 'var(--shadow-sm)',
                     transition: 'box-shadow 0.2s ease, transform 0.2s ease',
                   }}
                 >
                   <div>
                     {/* Top Doctor Avatar & Live Status Pill */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                         <div
                           style={{
-                            width: '44px',
-                            height: '44px',
+                            width: '48px',
+                            height: '48px',
                             borderRadius: '12px',
                             backgroundColor: 'var(--teal-50)',
                             color: 'var(--teal-600)',
@@ -448,21 +448,22 @@ export default function DashboardPage() {
                             flexShrink: 0,
                           }}
                         >
-                          <Stethoscope size={22} />
+                          <Stethoscope size={24} />
                         </div>
                         <div>
                           <h3
                             style={{
-                              fontSize: '1rem',
+                              fontSize: '1.1rem',
                               fontWeight: 700,
                               color: 'var(--primary-navy)',
                               margin: 0,
+                              whiteSpace: 'nowrap',
                             }}
                           >
                             {displayName}
                           </h3>
-                          <div style={{ fontSize: '0.8rem', color: 'var(--teal-600)', fontWeight: 600, marginTop: '2px' }}>
-                            {speciality}
+                          <div style={{ fontSize: '0.825rem', color: 'var(--teal-600)', fontWeight: 600, marginTop: '2px' }}>
+                            {speciality} &bull; {department}
                           </div>
                         </div>
                       </div>
@@ -471,14 +472,15 @@ export default function DashboardPage() {
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: '5px',
-                          padding: '3px 10px',
+                          gap: '6px',
+                          padding: '4px 12px',
                           borderRadius: '9999px',
                           backgroundColor: '#ecfdf5',
                           color: '#059669',
-                          fontSize: '0.725rem',
+                          fontSize: '0.75rem',
                           fontWeight: 600,
                           letterSpacing: '0.02em',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#059669' }}></span>
@@ -489,31 +491,35 @@ export default function DashboardPage() {
                     {/* Department, Shift, Qualifications & Details */}
                     <div
                       style={{
-                        marginTop: '16px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '8px',
+                        marginTop: '18px',
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                        gap: '10px 16px',
                         fontSize: '0.8125rem',
                         color: 'var(--slate-600)',
+                        backgroundColor: 'var(--slate-50)',
+                        padding: '14px 16px',
+                        borderRadius: '8px',
+                        border: '1px solid #f1f5f9',
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Clock size={14} color="var(--teal-600)" />
+                        <Clock size={15} color="var(--teal-600)" />
                         <span>Today's Shift: <strong style={{ color: 'var(--teal-700)' }}>{shiftTime}</strong></span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Building2 size={14} color="var(--slate-400)" />
-                        <span>Department: <strong style={{ color: 'var(--slate-700)' }}>{department}</strong></span>
+                        <Building2 size={15} color="var(--slate-400)" />
+                        <span>Dept: <strong style={{ color: 'var(--slate-700)' }}>{department}</strong></span>
                       </div>
                       {doc.qualification && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <Award size={14} color="var(--slate-400)" />
+                          <Award size={15} color="var(--slate-400)" />
                           <span>Qualification: {doc.qualification}</span>
                         </div>
                       )}
                       {doc.doctorPhone && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <Phone size={14} color="var(--slate-400)" />
+                          <Phone size={15} color="var(--slate-400)" />
                           <span>{doc.doctorPhone}</span>
                         </div>
                       )}
@@ -525,7 +531,7 @@ export default function DashboardPage() {
                     <Link
                       to={`/appointments?doctorId=${doc.id}`}
                       className="btn btn-primary btn-sm"
-                      style={{ flex: 1 }}
+                      style={{ padding: '8px 16px', fontWeight: 600 }}
                     >
                       Book Appointment
                     </Link>

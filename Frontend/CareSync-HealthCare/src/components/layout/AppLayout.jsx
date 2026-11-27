@@ -1,12 +1,20 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import hospitalBuildingImg from '../../assets/hospital-building.png';
 
 export default function AppLayout() {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const location = useLocation();
+
+  // Automatically close mobile sidebar when route changes
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [location.pathname]);
+
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--bg-app)', position: 'relative' }}>
+    <div className="app-container">
       {/* Global Hospital Background Watermark across full frontend */}
       <div
         className="hospital-global-watermark"
@@ -16,10 +24,22 @@ export default function AppLayout() {
         aria-hidden="true"
       />
 
-      <Sidebar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, position: 'relative', zIndex: 1 }}>
-        <Header />
-        <main style={{ flex: 1, padding: '32px', overflowY: 'auto', position: 'relative' }}>
+      {/* Mobile Backdrop Overlay */}
+      {mobileNavOpen && (
+        <div
+          className="sidebar-backdrop"
+          onClick={() => setMobileNavOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Responsive Sidebar Drawer */}
+      <Sidebar isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
+
+      {/* Main Content Area */}
+      <div className="main-content-wrapper">
+        <Header onToggleMobileNav={() => setMobileNavOpen((prev) => !prev)} />
+        <main className="main-content-body">
           <Outlet />
         </main>
       </div>

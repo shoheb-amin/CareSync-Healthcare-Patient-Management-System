@@ -182,7 +182,7 @@ export default function BillingPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       {/* Top Header with Action Buttons */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.875rem', fontWeight: 800, color: 'var(--primary-navy)', letterSpacing: '-0.02em', margin: 0 }}>
             Billing &amp; payments
@@ -191,7 +191,7 @@ export default function BillingPage() {
             Payment records held by the billing service, with status changes reported only after the API confirms them.
           </p>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div className="page-header-actions">
           <button
             onClick={() => loadData(true)}
             disabled={refreshing}
@@ -357,7 +357,7 @@ export default function BillingPage() {
         }}
       >
         {/* Table Header Row: Title & Status Selector */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
           <div>
             <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--primary-navy)', margin: 0 }}>
               Payment records

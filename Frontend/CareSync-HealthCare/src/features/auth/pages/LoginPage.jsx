@@ -28,7 +28,7 @@ export default function LoginPage() {
       const success = await login(email, password);
       if (success) {
         addToast('Successfully signed in to CareSync', 'success');
-        navigate('/');
+        navigate('/dashboard');
       } else {
         setErrorMsg('Invalid email or password. Please verify credentials.');
       }
@@ -49,11 +49,11 @@ export default function LoginPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '100vh',
+        height: '100vh',
         backgroundColor: '#f1f5f9',
         padding: '20px',
         position: 'relative',
-        overflow: 'hidden',
+        overflowY: 'auto',
       }}
     >
       {/* Background Hospital Watermark */}
@@ -85,9 +85,10 @@ export default function LoginPage() {
           width: '100%',
           maxWidth: '440px',
           boxShadow: 'var(--shadow-lg)',
-          padding: '36px',
+          padding: 'clamp(20px, 6vw, 36px)',
           position: 'relative',
           zIndex: 1,
+          boxSizing: 'border-box',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '28px' }}>
@@ -232,19 +233,7 @@ export default function LoginPage() {
             lineHeight: 1.5,
           }}
         >
-          For any queries regarding login or account access, contact via email at{' '}
-          <a
-            href="mailto:shohebamin7@gmail.com"
-            style={{
-              color: 'var(--teal-600)',
-              fontWeight: 600,
-              textDecoration: 'none',
-            }}
-            onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-            onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
-          >
-            shohebamin7@gmail.com
-          </a>
+          For any queries regarding login or account access, please contact hospital administration support.
         </div>
       </div>
     </div>

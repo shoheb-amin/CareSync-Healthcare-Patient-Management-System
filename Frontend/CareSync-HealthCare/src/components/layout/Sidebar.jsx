@@ -8,11 +8,12 @@ import {
   CreditCard,
   BarChart3,
   Bell,
+  X,
 } from 'lucide-react';
 import hospitalLogo from '../../assets/hospital-building.png';
 
 const navItems = [
-  { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+  { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { name: 'Patients', path: '/patients', icon: Users },
   { name: 'Doctors', path: '/doctors', icon: UserCheck },
   { name: 'Appointments', path: '/appointments', icon: Calendar },
@@ -21,77 +22,84 @@ const navItems = [
   { name: 'Notifications', path: '/notifications', icon: Bell },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
   return (
-    <aside
-      style={{
-        width: 'var(--sidebar-width)',
-        background: 'linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%)',
-        color: '#ffffff',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        boxShadow: '2px 0 8px rgba(0, 0, 0, 0.1)',
-      }}
-    >
+    <aside className={`sidebar-root ${isOpen ? 'mobile-open' : ''}`}>
       {/* Brand Header */}
-      <Link
-        to="/"
+      <div
         style={{
           height: 'var(--header-height)',
           display: 'flex',
           alignItems: 'center',
-          gap: '12px',
-          padding: '0 24px',
+          justifyContent: 'space-between',
+          padding: '0 20px',
           borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
-          textDecoration: 'none',
-          cursor: 'pointer',
         }}
-        title="Go to Dashboard"
       >
-        <div
+        <Link
+          to="/dashboard"
+          onClick={onClose}
           style={{
-            background: '#ffffff',
-            width: '38px',
-            height: '38px',
-            borderRadius: '10px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
-            padding: '3px',
-            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-            flexShrink: 0,
+            gap: '12px',
+            textDecoration: 'none',
+            cursor: 'pointer',
           }}
+          title="Go to Dashboard"
         >
-          <img
-            src={hospitalLogo}
-            alt="CareSync Hospital"
-            style={{ width: '32px', height: '32px', objectFit: 'contain' }}
-          />
-        </div>
-        <div>
-          <h2 style={{ fontSize: '1.15rem', fontWeight: 800, letterSpacing: '-0.02em', color: '#ffffff', margin: 0 }}>
-            CareSync
-          </h2>
-          <p style={{ fontSize: '0.675rem', color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0, fontWeight: 600 }}>
-            Hospital Management
-          </p>
-        </div>
-      </Link>
+          <div
+            style={{
+              background: '#ffffff',
+              width: '38px',
+              height: '38px',
+              borderRadius: '10px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              padding: '3px',
+              boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
+              flexShrink: 0,
+            }}
+          >
+            <img
+              src={hospitalLogo}
+              alt="CareSync Hospital"
+              style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+            />
+          </div>
+          <div>
+            <h2 style={{ fontSize: '1.15rem', fontWeight: 800, letterSpacing: '-0.02em', color: '#ffffff', margin: 0 }}>
+              CareSync
+            </h2>
+            <p style={{ fontSize: '0.675rem', color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0, fontWeight: 600 }}>
+              Hospital Management
+            </p>
+          </div>
+        </Link>
+
+        {/* Mobile Close Button */}
+        <button
+          className="sidebar-close-btn"
+          onClick={onClose}
+          title="Close Navigation"
+          aria-label="Close Navigation"
+        >
+          <X size={18} />
+        </button>
+      </div>
 
       {/* Navigation Links */}
-      <nav style={{ padding: '20px 12px', flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <nav style={{ padding: '20px 12px', flex: 1, display: 'flex', flexDirection: 'column', gap: '4px', overflowY: 'auto' }}>
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
             <NavLink
               key={item.path}
               to={item.path}
-              end={item.path === '/'}
+              end={item.path === '/dashboard'}
+              onClick={onClose}
               className={({ isActive }) => `sidebar-nav-link ${isActive ? 'active' : ''}`}
             >
               <Icon size={18} />

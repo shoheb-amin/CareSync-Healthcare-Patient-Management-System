@@ -5,7 +5,7 @@ import { sessionLogger } from './sessionLogger';
 // preventing browser CORS violations (since API Gateway does not enable CORS).
 // In production, Nginx reverse proxy handles /api/ and /auth/ routes seamlessly.
 const baseURL = import.meta.env.VITE_USE_DIRECT_API === 'true'
-  ? (import.meta.env.VITE_API_BASE_URL || 'http://localhost:4004')
+  ? (import.meta.env.VITE_API_BASE_URL || 'http://34.131.79.207:4004')
   : '';
 
 export const apiClient = axios.create({

@@ -134,10 +134,10 @@ export default function DoctorsPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--primary-navy)' }}>
-            Medical Staff & Specialists
+            Medical Staff &amp; Specialists
           </h1>
           <p style={{ color: 'var(--slate-500)', fontSize: '0.875rem' }}>
             Physicians, surgeons, and department specialists in CareSync.
@@ -149,7 +149,7 @@ export default function DoctorsPage() {
       </div>
 
       <div className="card">
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+        <div className="filter-bar">
           <SearchInput
             placeholder="Search doctor, speciality, department, city..."
             value={search}
@@ -214,7 +214,7 @@ export default function DoctorsPage() {
                       </div>
                     </div>
 
-                    <div style={{ marginTop: '20px', paddingTop: '12px', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
+                    <div style={{ marginTop: '20px', paddingTop: '12px', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'flex-end', gap: '8px', flexWrap: 'wrap' }}>
                       <button className="btn btn-secondary btn-sm" onClick={() => openEditModal(doc)}>
                         <Edit2 size={14} /> Edit
                       </button>

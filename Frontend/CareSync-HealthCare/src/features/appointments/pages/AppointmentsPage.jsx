@@ -242,7 +242,7 @@ export default function AppointmentsPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="page-header">
         <div>
           <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--primary-navy)' }}>
             Appointment Scheduling
@@ -251,7 +251,7 @@ export default function AppointmentsPage() {
             Book, reschedule, confirm, and manage clinical visits.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '12px' }}>
+        <div className="page-header-actions">
           <button className="btn btn-secondary" onClick={() => setIsAvailabilityOpen(true)}>
             <Clock size={16} /> Add Doctor Slot
           </button>
@@ -263,7 +263,7 @@ export default function AppointmentsPage() {
 
       <div className="card">
         {/* Search & Filter Bar */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', gap: '16px' }}>
+        <div className="filter-bar">
           <SearchInput
             placeholder="Search patient, doctor, or reason..."
             value={search}
@@ -273,7 +273,7 @@ export default function AppointmentsPage() {
             }}
           />
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="filter-bar-group">
             <Filter size={16} color="var(--slate-500)" />
             <select
               className="form-select"
@@ -341,7 +341,7 @@ export default function AppointmentsPage() {
                             <Badge variant={variant}>{appt.status}</Badge>
                           </td>
                           <td style={{ textAlign: 'right' }}>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
                               {(appt.status === 'SCHEDULED' || appt.status === 'RESCHEDULED') && (
                                 <button
                                   className="btn btn-secondary btn-sm"

@@ -57,6 +57,8 @@ function sessionLogPlugin() {
   };
 }
 
+const targetBackend = process.env.VITE_API_GATEWAY_URL || 'http://34.131.79.207:4004';
+
 export default defineConfig({
   plugins: [react(), sessionLogPlugin()],
   server: {
@@ -64,11 +66,11 @@ export default defineConfig({
     host: true,
     proxy: {
       '/auth': {
-        target: 'http://localhost:4004',
+        target: targetBackend,
         changeOrigin: true,
       },
       '/api': {
-        target: 'http://localhost:4004',
+        target: targetBackend,
         changeOrigin: true,
       },
     },
